@@ -12,6 +12,8 @@ class Artifact(object):
     classdocs
     '''
 
+    refs = []
+
     def __init__(self, uri, internal=False):
         '''
         Constructor
@@ -19,8 +21,8 @@ class Artifact(object):
         self.uri = uri
         self.internal = internal
         self.relationships = [] # list of artifact instances
-        print('I am made :).')
-    
+        Artifact.refs.append(self)
+
     def relate(self, other):
         self.relationships.append(other)
         other.relationships.append(self)
@@ -35,3 +37,19 @@ class Artifact(object):
         feats = re.findall(r'\w+|[^\s\w]', response.content.decode())
         
         return feats
+
+    @classmethod
+    def train(cls):
+        for ref in cls.refs[:1000]:
+            print('training', ref)
+
+if __name__ == '__main__':
+    import string
+    from random import choice
+    letters = list(string.ascii_letters)
+    
+    for i in range(1000000):
+        url = ''.join(choice(letters) for i in range(50))
+        a = Artifact(url)
+
+    Artifact.train()
