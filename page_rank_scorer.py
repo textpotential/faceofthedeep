@@ -3,11 +3,10 @@ import re
 import networkx as nx
 from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
 
-def get_highest_pagerank_scores(fileid, n=5):
+def get_highest_pagerank_scores(artifact, n=5):
 
-    with open(fileid, encoding="utf-8") as f:
-        text = f.read()
-        sentences = re.findall(r'.*?\n', text[0:10000], flags=re.DOTALL)
+#        text = 
+        sentences = re.findall(r'.*?\n', text, flags=re.DOTALL)
 
     vectorizer = CountVectorizer()
     matrix = vectorizer.fit_transform(sentences)
