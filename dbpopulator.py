@@ -43,3 +43,7 @@ print(gen_1_1.relations)
 
 # Close the database
 db.close()
+
+###############################################################################
+# The app will now have another image when viewed in the browser.
+###############################################################################
