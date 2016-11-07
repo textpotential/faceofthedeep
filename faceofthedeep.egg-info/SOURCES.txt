@@ -20,3 +20,4 @@ faceofthedeep/static/pyramid.png
 faceofthedeep/static/theme.css
 faceofthedeep/templates/faceofthedeep.pt
 faceofthedeep/templates/view.pt
+faceofthedeep/templates/view2.pt

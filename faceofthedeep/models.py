@@ -53,37 +53,3 @@ class PassageArtifacts(Persistent):
         """
         return sorted(self.relations, key=lambda x: scorer())
 
-
-def appmaker(zodb_root):
-    if 'app_root' not in zodb_root:
-        app_root = Face()
-        first_artifact = PassageArtifacts('gen1:1')
-        first_artifact.relate('בְּרֵאשִׁ֖ית בָּרָ֣א אֱלֹהִ֑ים אֵ֥ת הַשָּׁמַ֖יִם וְאֵ֥ת הָאָֽרֶץ׃')
-        first_artifact.relate('In the beginning when God created '
-                              'the heavens and the earth, . . .')
-        first_artifact.relate('https://upload.wikimedia.org/wikipedia/'
-                              'commons/1/1a/William_de_Brailes_-'
-                              '_First_Two_Days_of_Creation_%28'
-                              'Genesis_1_-_1-8%29_-_Walters_W1061R_-'
-                              '_Full_Page.jpg')
-        first_artifact.relate('https://upload.wikimedia.org/wikipedia/'
-                              'commons/3/3e/Ifc_mall_Void_201108.jpg')
-        first_artifact.relate('https://upload.wikimedia.org/wikipedia/'
-                              'commons/b/b3/Genesis_on_egg_cropped.jpg')
-        first_artifact.relate('https://upload.wikimedia.org/wikipedia/'
-                              'commons/f/f3/Genesis_Chapter_One_'
-                              'from_a_1620-21_King_James_Bible.jpg')
-        app_root[first_artifact.ref] = first_artifact
-        first_artifact.__parent__ = app_root
-
-        # add a second as well
-        second_artifact = PassageArtifacts('gen1:2')
-        second_artifact.relate('וְהָאָ֗רֶץ הָיְתָ֥ה תֹ֙הוּ֙ וָבֹ֔הוּ וְחֹ֖שֶׁךְ עַל־פְּנֵ֣י תְהֹ֑ום וְר֣וּחַ אֱלֹהִ֔ים מְרַחֶ֖פֶת עַל־פְּנֵ֥י הַמָּֽיִם׃')
-        app_root[second_artifact.ref] = second_artifact
-        second_artifact.__parent__ = app_root
-
-        zodb_root['app_root'] = app_root
-        import transaction
-        transaction.commit()
-
-    return zodb_root['app_root']

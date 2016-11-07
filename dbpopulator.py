@@ -27,6 +27,12 @@ root.app_root['gen1:3'] = gen_1_3
 gen_1_3.relate('https://lh3.googleusercontent.com/-e2kQFsSbH0Y/AAAAAAAAAAI/'
                'AAAAAAAAAdY/_nuYB6f2VVM/s500-c-no/photo.jpg')
 
+gen_1_2 = root.app_root['gen1:2']
+gen_1_2.relate(":-)")
+gen_1_2.relate("http://www.indyish.com/wp-content/uploads/2008/06/asmz.jpg")
+
+gen_1_2._p_changed = True
+
 # add ref to existing passage
 gen_1_1 = root.app_root['gen1:1']
 gen_1_1.relate('https://lh3.googleusercontent.com/-e2kQFsSbH0Y/AAAAAAAAAAI/'
