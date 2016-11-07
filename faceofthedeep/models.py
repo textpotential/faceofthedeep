@@ -22,6 +22,7 @@ class PassageArtifacts(Persistent):
         Constructor
         """
         self.ref = ref
+        self.__name__ = ref
         self.relations = set()
 
     @property
@@ -73,14 +74,12 @@ def appmaker(zodb_root):
                               'commons/f/f3/Genesis_Chapter_One_'
                               'from_a_1620-21_King_James_Bible.jpg')
         app_root[first_artifact.ref] = first_artifact
-        first_artifact.__name__ = first_artifact.ref
         first_artifact.__parent__ = app_root
 
         # add a second as well
         second_artifact = PassageArtifacts('gen1:2')
         second_artifact.relate('וְהָאָ֗רֶץ הָיְתָ֥ה תֹ֙הוּ֙ וָבֹ֔הוּ וְחֹ֖שֶׁךְ עַל־פְּנֵ֣י תְהֹ֑ום וְר֣וּחַ אֱלֹהִ֔ים מְרַחֶ֖פֶת עַל־פְּנֵ֥י הַמָּֽיִם׃')
         app_root[second_artifact.ref] = second_artifact
-        second_artifact.__name__ = second_artifact.ref
         second_artifact.__parent__ = app_root
 
         zodb_root['app_root'] = app_root
