@@ -12,11 +12,10 @@ def my_view(context, request):
     return HTTPFound(location=request.resource_url(context, 'Face'))
 
 
-@view_config(route='Genesis 1:1',
-             context='.models.PassageArtifacts')
+@view_config(context=PassageArtifacts, renderer='templates/view.pt')
 def view_passage(context, request):
     # face = context.__parent__
-    passage = context['Genesis 1:1']  # hard-coded; change!
+    passage = context  # obviously unnecessary, but leaving it for the moment for conceptual reasons
 
     elements = []
     for text, type_ in passage.text_type_data:
@@ -34,4 +33,3 @@ def view_passage(context, request):
     return dict(passage=passage,
                 elements=formatted_elems,
                 request=request)
-
