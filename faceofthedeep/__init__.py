@@ -14,10 +14,6 @@ def main(global_config, **settings):
     config = Configurator(root_factory=root_factory, settings=settings)
     config.include('pyramid_chameleon')
     config.add_static_view('static', 'static', cache_max_age=3600)
-    # omitting traversal for now; using URL dispatch instead
-    # config.scan()
-    config.add_route('Genesis 1:1', '/gen1:1')
-    config.add_view('.views.view_passage', route_name='Genesis 1:1',
-                    renderer='templates/view.pt')
+    # adding traversal back in
+    config.scan()
     return config.make_wsgi_app()
-
