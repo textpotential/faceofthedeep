@@ -19,12 +19,14 @@ root = connection.root
 # Add to database (automate this--use a for clause, for example).
 ###############################################################################
 
-# Now get the `Genesis 1:1` PassageArtifacts instance that was previously saved.
-gen_1_1 = root.app_root['Genesis 1:1']
+# add a new passage
+gen_1_3 = PassageArtifacts('gen1:3')
+root.app_root['gen1:3'] = gen_1_3
+gen_1_3.relate('https://lh3.googleusercontent.com/-e2kQFsSbH0Y/AAAAAAAAAAI/'
+               'AAAAAAAAAdY/_nuYB6f2VVM/s500-c-no/photo.jpg')
 
-print(gen_1_1.relations)
-
-# Add a new relation.
+# add ref to existing passage
+gen_1_1 = root.app_root['gen1:1']
 gen_1_1.relate('https://lh3.googleusercontent.com/-e2kQFsSbH0Y/AAAAAAAAAAI/'
                'AAAAAAAAAdY/_nuYB6f2VVM/s500-c-no/photo.jpg')
 # We have to let ZODB know that the `relations` set has changed.
