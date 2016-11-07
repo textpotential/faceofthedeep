@@ -8,6 +8,8 @@ manually (and create a function to add), if you'd prefer.
 import transaction
 import ZODB, ZODB.FileStorage
 
+from faceofthedeep.models import PassageArtifacts
+
 
 # Note that this script should be in the same directory as `Data.fs`.
 # Open the datbase and get the root.
