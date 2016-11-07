@@ -56,7 +56,7 @@ class PassageArtifacts(Persistent):
 def appmaker(zodb_root):
     if 'app_root' not in zodb_root:
         app_root = Face()
-        first_artifact = PassageArtifacts('Genesis 1:1')
+        first_artifact = PassageArtifacts('gen1:1')
         first_artifact.relate('בְּרֵאשִׁ֖ית בָּרָ֣א אֱלֹהִ֑ים אֵ֥ת הַשָּׁמַ֖יִם וְאֵ֥ת הָאָֽרֶץ׃')
         first_artifact.relate('In the beginning when God created '
                               'the heavens and the earth, . . .')
@@ -75,7 +75,16 @@ def appmaker(zodb_root):
         app_root[first_artifact.ref] = first_artifact
         first_artifact.__name__ = first_artifact.ref
         first_artifact.__parent__ = app_root
+
+        # add a second as well
+        second_artifact = PassageArtifacts('gen1:2')
+        second_artifact.relate('וְהָאָ֗רֶץ הָיְתָ֥ה תֹ֙הוּ֙ וָבֹ֔הוּ וְחֹ֖שֶׁךְ עַל־פְּנֵ֣י תְהֹ֑ום וְר֣וּחַ אֱלֹהִ֔ים מְרַחֶ֖פֶת עַל־פְּנֵ֥י הַמָּֽיִם׃')
+        app_root[second_artifact.ref] = second_artifact
+        second_artifact.__name__ = second_artifact.ref
+        second_artifact.__parent__ = app_root
+
         zodb_root['app_root'] = app_root
         import transaction
         transaction.commit()
+
     return zodb_root['app_root']
