@@ -18,7 +18,7 @@ the `search_google` function below will search Google for images like this:
  'link': 'http://cdn.knowing-jesus.com/wp-content/uploads/Genesis-1-2-The-Earth-Was-WIthour-Form-And-Void-blue-copy.jpg',
  'mime': 'image/jpeg',
  'snippet': 'Genesis 1-2 The Earth Was ...',
- 'title': 'Genesis 1:2 Verse of the Day'},
+ 'title': 'Genesis 1:2 Verse of the Day'},  # truncating the 9 other results in order to preserve space
 ...]
 
 (Note the 'link' key in the first search result above.)
