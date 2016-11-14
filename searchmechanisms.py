@@ -2,7 +2,7 @@
 A module that has the capacity to automate the search process. For example,
 the `search_google` function below will search Google for images like this:
 
->>> search_results = search('Genesis 1:2')
+>>> search_results = search_google('Genesis 1:2')
 >>> search_results
 [{'displayLink': 'www.knowing-jesus.com',
  'htmlSnippet': '<b>Genesis 1-2</b> The Earth Was ...',
